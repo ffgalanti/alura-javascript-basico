@@ -25,10 +25,14 @@ for(var i = 0; i < pacientes.length; i++) {
     }
     
     if(pesoEhValido && alturaEhValida) {
-        var imc = peso / (altura * altura);
-        tdImc.textContent = imc.toFixed(2);
+        var imc = caldulaImc(peso, altura);
+        tdImc.textContent = imc;
     } else {
         tdImc.textContent = 'Peso/Altura inválido';
         paciente.classList.add('paciente-invalido');
     }
+}
+
+function caldulaImc(peso, altura) {
+    return (peso / (altura * altura)).toFixed(2);
 }
