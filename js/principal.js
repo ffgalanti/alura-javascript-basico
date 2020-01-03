@@ -6,10 +6,11 @@ var pacientes = document.querySelectorAll('.paciente');
 console.log(pacientes.length);
 
 for(var i = 0; i < pacientes.length; i++) {
+    var paciente = pacientes[i];
 
-    var tdPeso = pacientes[i].querySelector('.info-peso');
-    var tdAltura = pacientes[i].querySelector('.info-altura');
-    var tdImc = pacientes[i].querySelector('.info-imc');
+    var tdPeso = paciente.querySelector('.info-peso');
+    var tdAltura = paciente.querySelector('.info-altura');
+    var tdImc = paciente.querySelector('.info-imc');
     
     var peso = tdPeso.textContent;
     var altura = tdAltura.textContent;
@@ -30,5 +31,6 @@ for(var i = 0; i < pacientes.length; i++) {
         tdImc.textContent = imc.toFixed(2);
     } else {
         tdImc.textContent = 'Peso/Altura inválido';
+        paciente.classList.add('paciente-invalido');
     }
 }
