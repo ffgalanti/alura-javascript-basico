@@ -8,6 +8,21 @@ var tdImc = paciente.querySelector('.info-imc');
 
 var peso = tdPeso.textContent;
 var altura = tdAltura.textContent;
-var imc = peso / (altura * altura);
 
-tdImc.textContent = imc;
+var pesoHeValido = true;
+var alturaHeValida = true;
+
+if (peso <= 0 || peso >= 1000) {
+    pesoHeValido = false;
+}
+
+if (altura <= 0 || altura >= 3.0) {
+    alturaHeValida = false;
+}
+
+if(pesoHeValido && alturaHeValida) {
+    var imc = peso / (altura * altura);
+    tdImc.textContent = imc;
+} else {
+    tdImc.textContent = '----';
+}
