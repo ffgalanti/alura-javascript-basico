@@ -12,25 +12,33 @@ for(var i = 0; i < pacientes.length; i++) {
     
     var peso = tdPeso.textContent;
     var altura = tdAltura.textContent;
-    
-    var pesoEhValido = true;
-    var alturaEhValida = true;
-    
-    if (peso <= 0 || peso >= 1000) {
-        pesoEhValido = false;
-    }
-    
-    if (altura <= 0 || altura >= 3.0) {
-        alturaEhValida = false;
-    }
-    
-    if(pesoEhValido && alturaEhValida) {
+       
+    if( (validaPeso(peso).length <= 0) && (validaAltura(altura).length <= 0)) {
         var imc = caldulaImc(peso, altura);
         tdImc.textContent = imc;
     } else {
         tdImc.textContent = 'Peso/Altura inválido';
         paciente.classList.add('paciente-invalido');
     }
+}
+
+function validaPeso(peso) {
+    var pesoEhValido = "";
+    if (peso <= 0 || peso >= 1000) {
+        pesoEhValido = "Peso inválido!";
+    }
+
+    return pesoEhValido;
+}
+
+function validaAltura(altura) {
+    var alturaEhValida = "";
+    
+    if (altura <= 0 || altura >= 3.0) {
+        alturaEhValida = "Altura inválida!";
+    }
+
+    return alturaEhValida;
 }
 
 function caldulaImc(peso, altura) {
